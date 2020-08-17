@@ -9,7 +9,7 @@ import { auth } from './firebase'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyAiPzM-jzrnZ3aUwbpe4lFE67CU8270rHs"
+    key: "AIzaSyCi_j3jUYefKb0eVtZ5XD04RtDu-n0z0Ik"
   }
 })
 

@@ -9,6 +9,8 @@
             </center>
 
               <v-card-text>
+                <b-alert v-if="error === 'auth/user-not-found'" class="mt-4" show variant="danger">Usuario no encontrado</b-alert>
+                <b-alert v-if="error === 'auth/wrong-password'" class="mt-4" show variant="danger">Contraseña Incorrecta</b-alert>
 
                 <input 
                     placeholder="Correo Electronico"
@@ -26,7 +28,7 @@
 
                 <v-btn id="boton" @click="ingresoUsuario({email: email, pass: pass})" class="mt-10" height="50" block dark depressed color="#00514e" >Iniciar Sesion</v-btn>
                 <v-btn id="boton" :to="{name: 'CrearCuenta'}" class="mt-3" height="50" block dark depressed color="#00514e">Crear Cuenta</v-btn>
-                <v-btn id="boton" class="mt-3" height="50" text block depressed >¿Olvido su Contraseña?</v-btn>
+                <v-btn id="boton" :to="{name: 'reestablecerContrasena'}" class="mt-3" height="50" text block depressed >¿Olvido su Contraseña?</v-btn>
               </v-card-text>
           </v-container>
         </v-card>
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
@@ -43,6 +45,10 @@ export default {
             email: '',
             pass: '',
         }
+    },
+
+    computed: {
+        ...mapState('auth', ['error']),
     },
 
     methods: {

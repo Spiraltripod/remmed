@@ -24,6 +24,7 @@ export function ingresoUsuario({commit}, payload){
     })
     .catch( err => {
         console.log(err)
+        commit('setError', err.code)
     })
 }
 

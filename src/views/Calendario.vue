@@ -49,9 +49,10 @@
             </v-sheet>
             <v-sheet height="600">
                 <v-calendar
+                id="letra"
                 ref="calendar"
                 v-model="focus"
-                color="primary"
+                color="success"
                 :events="events"
                 :event-color="getEventColor"
                 :type="type"
@@ -134,13 +135,13 @@ export default {
       selectedOpen: false,
       events: [],
       //Adicionales
-      color: '#1976D2',
+      color: 'success',
       
 
     }),
     mounted () {
       this.$refs.calendar.checkChange()
-      this.getMedicaciones()
+      this.obtenerMedicaciones()
     },
 
     computed: {
@@ -149,6 +150,12 @@ export default {
 
     methods: {
        ...mapActions('crud', ['getMedicaciones']),
+
+       obtenerMedicaciones() {
+          setTimeout(function() {
+            this.getMedicaciones
+          }, 1000)
+       },
 
       viewDay ({ date }) {
         this.focus = date
@@ -196,7 +203,6 @@ export default {
         }
         
         this.events = events
-        console.log(this.events);
 
       },
     },

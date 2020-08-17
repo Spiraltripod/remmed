@@ -39,6 +39,7 @@ export function agregarMedicacion({dispatch}, medicamento){
         instrucciones: medicamento.instrucciones,
         start: medicamento.start,
         end: medicamento.end,
+        hora: medicamento.hora,
         terminado: medicamento.terminado,
     })
     .then(() => {
@@ -57,6 +58,7 @@ export function editarMedicacion({commit}, medicamento){
         instrucciones: medicamento.instrucciones,
         start: medicamento.start,
         end: medicamento.end,
+        hora: medicamento.hora,
         terminado: medicamento.terminado,
     })
     .then(() => {
@@ -69,11 +71,12 @@ export function eliminarMedicacion({commit, dispatch}, payload){
  
     db.collection(user.email).doc(payload.id).delete()
     .then(() => {
-        console.log('Medicamento fue eliminada')
+        console.log('Medicamento fue eliminado')
+        dispatch('getMedicaciones')
+        router.push({name: 'inicio'})
     })
     .catch( err => {
         console.log(err);
     })
-    dispatch('getMedicaciones')
     commit('eliminarTarea', payload.id)
 }

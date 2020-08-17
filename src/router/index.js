@@ -21,6 +21,11 @@ Vue.use(VueRouter)
       component: () => import('../views/CrearCuenta.vue')
     },
     {
+      path: '/reestablecer-contrasena',
+      name: 'reestablecerContrasena',
+      component: () => import('../views/ReestablecerContrasena.vue'),
+    },
+    {
       path: '/inicio',
       name: 'inicio',
       component: () => import('../views/Inicio.vue'),
@@ -56,6 +61,13 @@ Vue.use(VueRouter)
       component: () => import('../views/Ajustes.vue'),
       meta: {requiresAuth: true}
     },
+    {
+      path: '/cuenta',
+      name: 'cuenta',
+      component: () => import('../views/Cuenta.vue'),
+      meta: {requiresAuth: true}
+    },
+    
 ]
 
 const router = new VueRouter({
